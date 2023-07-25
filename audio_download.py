@@ -17,8 +17,10 @@ def generate_timestamp():
 
 
 def summarize_huggingface(text, desired_output_length = 150):
+  if len(text) > 1024:
+      text = text[:1024]
   summarizer = transformers.pipeline("summarization", model="sshleifer/distilbart-cnn-12-6", revision="a4f8f3e")
-  summary = summarizer(text, max_length = desired_output_length)[0]["summary_text"]
+  summary = summarizer(text)[0]["summary_text"]
   return summary
 
 def get_minimum_size(url):

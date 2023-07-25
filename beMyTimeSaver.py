@@ -5,7 +5,8 @@ from threading import Thread
 from deep_translator import GoogleTranslator
 from audio_download import get_audio, summarize_huggingface, transcribe, get_minimum_size
 
-st.title("Be my time saver")
+st.write("<div style='display:flex; align-items: center;letter-spacing: 2px;'><h1>QuickLingoYouTube</h1><p style='font-size:small;margin-left:-35px;margin-top:37px;'>From  <a style='text-decoration:none;' href='https://www.linkedin.com/in/shakthi-s-a0b44a211/'>Shakthi</a></p></div>", unsafe_allow_html=True)
+st.write("<div><p style='letter-spacing:2px; font-weight:light; margin-left:5px;'>Empowering the Blind, Engaging the Deaf, and Time-Saving Translations</p></div>", unsafe_allow_html=True)
 langs_dict = GoogleTranslator().get_supported_languages(as_dict=True)
 
 def talk_output(content):
@@ -30,17 +31,6 @@ def translate(content, targetLang):
     translated_text = GoogleTranslator(source='auto', target=targetLang).translate(content)
     return translated_text
 
-with st.form("my_form"):
-    url = st.text_input(label="Enter the youtube video link", help="Enter the youtube video link")
-    st.write("Choose preferences")
-    toSummarize = st.checkbox("Summarize the content to the desired length")
-    summarization_length = st.slider("Summarization Length: ", min_value=150, max_value=350, value=200)
-    selected_language = st.selectbox("Choose the language you want to translate to", ["English"] + [label.capitalize() for label in langs_dict])
-    submitted = st.form_submit_button("Transcribe")
-
-while not submitted:
-    pass
-
 def show_progress(request, length = 502161): 
     # talk_output(request) 
     my_bar = st.progress(0, text=request)
@@ -48,45 +38,56 @@ def show_progress(request, length = 502161):
         time.sleep(0.01)
         my_bar.progress(percent_complete + 1, text=request)
 
+with st.form("my_form"):
+    url = st.text_input(label="Enter the youtube video link", help="supported languages: English, Spanish, French, German, Italian, Portuguese, Dutch, Hindi, Japanese")
+    st.write("Choose preferences")
+    toSummarize = st.checkbox("Summarize the content to the desired length")
+    summarization_length = st.slider("Summarization Length: ", min_value=150, max_value=500, value=200)
+    selected_language = st.selectbox("Choose the language you want to translate to", ["Original"] + [label.capitalize() for label in langs_dict])
+    submitted = st.form_submit_button("Transcribe")
+
+while not submitted:
+    pass
+
 minimum_size_file = get_minimum_size(url)
 minimum_size = minimum_size_file.get_filesize()
+
 show_progress("Preparing for Extracting content", minimum_size)
-
 filename, contentname = get_audio(minimum_size_file)
-show_progress("Preparing for Transcription", minimum_size)
 
+show_progress("Preparing for Transcription", minimum_size)
 content = transcribe(filename)
 os.remove(filename)
+
 summarized_content = content
 if toSummarize:
     show_progress("Shortening content")
     summarized_content = summarize_huggingface(content, summarization_length)
-
 st.divider()
-st.subheader(contentname + '\n')
 
-if selected_language != 'English':
+st.subheader(contentname + '\n')
+if selected_language != 'Original':
     translated_content = translate(summarized_content, selected_language)
+    st.write(selected_language + ": ")
     st.write(summarized_content)
-    type_output(f"Voice over is currently not supported for {selected_language}.\nOriginal version: \n"+ translated_content)
+    if(selected_language == 'English'):
+        talk_output(translated_content)
+    else:
+        st.write(f"Voice over is currently not supported for {selected_language}.")
     st.divider()
 else:
     type_output(summarized_content)
     talk_output(summarized_content)
 
+type_output("\nThank you for using", 0.3)
+
 # talkThread = Thread(target = talk_output, args=(summarized_content,))
 # talkThread.start()
 # talkThread.join()
-
-type_output("\nThank you for using", 0.3)
 # st.balloons()
-
 # typeThread = Thread(target = type_output, args=(summarized_content,))
 # typeThread.start()
 # typeThread.join()
-
 # st.download_button("Download the output file as text", data="news.webm")
 # st.success('🤗')
-
-
 # Token indices sequence length is longer than the specified maximum sequence length for this model (2246 > 1024). Running this sequence through the model will result in indexing errors

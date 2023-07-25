@@ -10,6 +10,11 @@ os.system('sudo apt-get -y update')
 os.system('sudo apt-get install -y alsa-utils')
 os.system('sudo apt-get install -y software-properties-common')
 os.system('sudo apt-get install -y ffmpeg')
+os.system('apt install -y espeak')
+os.system('apt-get -y update')
+os.system('apt-get install -y alsa-utils')
+os.system('apt-get install -y software-properties-common')
+os.system('apt-get install -y ffmpeg')
 
 
 st.write("<div style='display:flex; align-items: center;letter-spacing: 2px;margin-left:2px;'><h1>QuickLingoYouTube</h1></div>", unsafe_allow_html=True)

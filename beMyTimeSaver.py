@@ -80,6 +80,7 @@ else:
     talk_output(summarized_content)
 
 type_output("\nThank you for using", 0.3)
+st.markdown("Developed by [Shakthi](https://www.linkedin.com/in/shakthi-s-a0b44a211/)")
 
 # talkThread = Thread(target = talk_output, args=(summarized_content,))
 # talkThread.start()

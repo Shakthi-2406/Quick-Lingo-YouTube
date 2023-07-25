@@ -27,6 +27,9 @@ def type_output(content, delay = 0.001):
 
 def translate(content, targetLang):
     show_progress(f"Translating in {targetLang} for you....")
+    if len(content) > 5000:
+        st.warning("Text size exceeds 5000 characters. Truncating to meet the limit.")
+        content = content[:5000]
     targetLang = targetLang.lower()
     translated_text = GoogleTranslator(source='auto', target=targetLang).translate(content)
     return translated_text

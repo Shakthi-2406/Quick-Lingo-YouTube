@@ -1,1 +1,2 @@
 libespeak1
+alsa-utils

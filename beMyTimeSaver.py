@@ -11,7 +11,7 @@ langs_dict = GoogleTranslator().get_supported_languages(as_dict=True)
 
 def talk_output(content):
     converter = pyttsx3.init()
-    converter.setProperty('rate', 200)
+    converter.setProperty('rate', 130)
     converter.setProperty('volume', 1)
     for sentence in content.split('\n'):
         converter.say(sentence)
@@ -49,6 +49,8 @@ with st.form("my_form"):
 while not submitted:
     pass
 
+
+st.toast("Process initiated")
 minimum_size_file = get_minimum_size(url)
 minimum_size = minimum_size_file.get_filesize()
 
@@ -69,11 +71,13 @@ st.subheader(contentname + '\n')
 if selected_language != 'Original':
     translated_content = translate(summarized_content, selected_language)
     st.write(selected_language + ": ")
+    st.write(translated_content)
     st.write(summarized_content)
     if(selected_language == 'English'):
         talk_output(translated_content)
     else:
         st.write(f"Voice over is currently not supported for {selected_language}.")
+        talk_output(summarized_content)
     st.divider()
 else:
     type_output(summarized_content)

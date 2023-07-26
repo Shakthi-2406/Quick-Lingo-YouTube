@@ -1,5 +1,5 @@
 import streamlit as st
-from beMyTimeSaver import *
+from QuickLingoYoutube import *
 import gtts
 talking_languages = gtts.lang.tts_langs()
 

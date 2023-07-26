@@ -1,6 +1,7 @@
 # QuickLingoYouTube - Empowering the Blind, Engaging the Deaf, and Saving Time
 
 QuickLingoYouTube is live and accessible at: [https://quick-lingo-youtube.streamlit.app/](https://quick-lingo-youtube.streamlit.app/)
+
 It is an innovative web application that enhances the accessibility and convenience of YouTube videos, catering to a wide range of users. With a user-friendly interface, it allows users to paste a YouTube link and choose from various options to customize their experience.
 
 

@@ -3,7 +3,18 @@ import pyttsx3
 import time, os
 from threading import Thread
 from deep_translator import GoogleTranslator
-from audio_download import get_audio, summarize_huggingface, transcribe, get_minimum_size
+from audio_download import get_audio, summarize_huggingface, transcribe, get_minimum_size, generate_timestamp
+import gtts, base64
+from io import BytesIO
+from functools import lru_cache
+from make_pdf import make_pdf
+
+
+st.set_page_config(
+    page_title="QuickLingoYouTube",
+    page_icon="🚀"
+)
+
 
 st.write("<div style='display:flex; align-items: center;letter-spacing: 2px;margin-left:2px;'><h1>QuickLingoYouTube</h1></div>", unsafe_allow_html=True)
 st.write("<p style='font-size:small;margin-left:5px;margin-top:-5px;margin-bottom:-5px;'>From  <a style='text-decoration:none;' href='https://www.linkedin.com/in/shakthi-s-a0b44a211/'>Shakthi</a></p>", unsafe_allow_html=True)
@@ -32,9 +43,6 @@ def google_tts_talk(content, language):
 
 
 def streamlit_talk(audio_file_name):
-    # sound = AudioSegment.from_mp3(audio_file_name)
-    # # sound._data is a bytestring
-    # raw_data = sound._data
     audio_tag = f'<audio autoplay="true" src="{audio_file_name}">'
     return audio_tag
     st.markdown(audio_tag, unsafe_allow_html=True)

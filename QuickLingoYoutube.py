@@ -15,7 +15,6 @@ st.set_page_config(
     page_icon="🚀"
 )
 
-
 st.write("<div style='display:flex; align-items: center;letter-spacing: 2px;margin-left:2px;'><h1>QuickLingoYouTube</h1></div>", unsafe_allow_html=True)
 st.write("<p style='font-size:small;margin-left:5px;margin-top:-5px;margin-bottom:-5px;'>From  <a style='text-decoration:none;' href='https://www.linkedin.com/in/shakthi-s-a0b44a211/'>Shakthi</a></p>", unsafe_allow_html=True)
 st.write("<div><p style='letter-spacing:2px; font-weight:light; margin-left:5px;'>Empowering the Blind, Engaging the Deaf, and Time-Saving Translations</p></div>", unsafe_allow_html=True)

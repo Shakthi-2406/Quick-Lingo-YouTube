@@ -32,6 +32,7 @@ def get_tts_lang_code(language):
 def google_tts_talk(content, language):
     if get_tts_lang_code(language) == 'Not supported':
         return f"<p>Speech is not yet implemented for {language}</p>"
+    show_progress(f"Voice over for {language} initialization")
     
     sound_file = BytesIO()
     tts = gtts.gTTS(content, lang='en', slow=False)
@@ -136,8 +137,6 @@ download = st.download_button(
     file_name=f"{contentname}.pdf",
     mime="application/pdf",
 )
-
-show_progress("Voice over initialization", minimum_size)
 
 st.markdown(google_tts_talk(summarized_content, "English"), unsafe_allow_html=True)
 

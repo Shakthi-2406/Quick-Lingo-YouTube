@@ -62,13 +62,13 @@ def talk_output(content, streamlit=False):
     if streamlit:
         return streamlit_talk(audio_file_name)
 
-def type_output(content, delay = 0.0002):
+def type_output(content, delay = 0.00005):
     placeholder = st.empty()
     intermediate = ""
     for letter in content:
         intermediate += letter
         placeholder.write(intermediate+'|')
-        time.sleep(delay)
+        # time.sleep(delay)
 
 def translate(content, targetLang):
     show_progress(f"Translating in {targetLang} for you....")
@@ -82,9 +82,9 @@ def translate(content, targetLang):
 def show_progress(request, length = 502161): 
     # talk_output(request) 
     my_bar = st.progress(0, text=request)
-    for percent_complete in range(100):
-        time.sleep(0.01)
-        my_bar.progress(percent_complete + 1, text=request)
+    for percent_complete in range(20):
+        # time.sleep(0.01)
+        my_bar.progress(percent_complete + 5, text=request)
 
 with st.form("my_form"):
     url = st.text_input(label="Enter the youtube video link", help="supported languages: English, Spanish, French, German, Italian, Portuguese, Dutch, Hindi, Japanese")

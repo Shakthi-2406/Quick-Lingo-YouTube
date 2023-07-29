@@ -16,7 +16,7 @@ class PDF(FPDF):
         title = title.encode('latin-1', 'replace').decode('latin-1')
         url = url.encode('latin-1', 'replace').decode('latin-1')
 
-        text = f"{title}\n" + text
+        text = f"{title}. " + text
         text = text.split(". ")
         self.set_font("helvetica", 'B', size=13)
 

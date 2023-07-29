@@ -82,9 +82,9 @@ def translate(content, targetLang):
 def show_progress(request, length = 502161): 
     # talk_output(request) 
     my_bar = st.progress(0, text=request)
-    for percent_complete in range(20):
+    for percent_complete in range(21):
         # time.sleep(0.01)
-        my_bar.progress(percent_complete + 5, text=request)
+        my_bar.progress(percent_complete*5, text=request)
 
 with st.form("my_form"):
     url = st.text_input(label="Enter the youtube video link", help="supported languages: English, Spanish, French, German, Italian, Portuguese, Dutch, Hindi, Japanese")

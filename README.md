@@ -1,4 +1,4 @@
-# QuickLingoYouTube - Empowering the Blind, Engaging the Deaf, and Saving Time
+# QuickLingoYouTube (YOUTUBE TRANS-SUMMARIZER) - Empowering the Blind, Engaging the Deaf, and Saving Time
 
 QuickLingoYouTube is live and accessible at: [https://quick-lingo-youtube.streamlit.app/](https://quick-lingo-youtube.streamlit.app/)
 

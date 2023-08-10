@@ -2,7 +2,7 @@
 
 QuickLingoYouTube is live and accessible at: [https://quick-lingo-youtube.streamlit.app/](https://quick-lingo-youtube.streamlit.app/)
 
-An AI-powered web app facilitating global lingual YouTube content access with bf language translation, summarization and inclusive features for the visually and hearing-impaired
+An AI-powered web app facilitating global lingual YouTube content access with language translation, summarization and inclusive features for the visually and hearing-impaired
 
 
 ![Screenshot (45)](https://github.com/Shakthi-2406/Quick-Lingo-YouTube/assets/84411432/9ebb4357-ebf7-46bc-9a67-5df89912a870)
